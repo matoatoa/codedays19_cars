@@ -42,4 +42,9 @@ public class Vehicle {
     public boolean hadService() {
         return dateOfLastService != null;
     }
+
+    public boolean isSold() {
+        return owner != null && dateOfPurchase != null;
+    }
+
 }
