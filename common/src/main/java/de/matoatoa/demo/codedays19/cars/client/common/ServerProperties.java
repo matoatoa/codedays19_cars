@@ -21,10 +21,10 @@ public class ServerProperties {
     /**
      * user name for cars server
      */
-    private String user = "admin";
+    private String user;
 
     /**
      * password for cars server
      */
-    private String password = "secret";
+    private String password;
 }

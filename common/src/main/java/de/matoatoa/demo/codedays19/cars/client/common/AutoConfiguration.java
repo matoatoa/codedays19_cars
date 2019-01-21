@@ -1,6 +1,7 @@
 package de.matoatoa.demo.codedays19.cars.client.common;
 
 import lombok.AllArgsConstructor;
+import org.springframework.beans.factory.InitializingBean;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
@@ -8,6 +9,12 @@ import org.springframework.boot.web.client.RestTemplateBuilder;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.client.RestTemplate;
+
+import static org.springframework.util.StringUtils.isEmpty;
+
+/**
+ * @author Jan Hauer
+ */
 
 @AllArgsConstructor
 @Configuration
@@ -33,6 +40,15 @@ public class AutoConfiguration {
     @ConditionalOnMissingBean
     public CustomerController customerController(CustomerService customerService) {
         return new CustomerController(customerService);
+    }
+
+    @Bean
+    InitializingBean checkIfConfigurationIsComplete(ServerProperties properties) {
+        return () -> {
+            if (isEmpty(properties.getUrl()) || isEmpty(properties.getUser()) || isEmpty(properties.getPassword())) {
+                throw new IncompleteConfigurationException(properties);
+            }
+        };
     }
 
     @Bean
