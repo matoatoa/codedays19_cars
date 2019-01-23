@@ -1,27 +1,18 @@
 package de.matoatoa.demo.codedays19.cars.client.common;
 
+import lombok.AllArgsConstructor;
+import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.boot.web.client.RestTemplateBuilder;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.client.RestTemplate;
 
+@AllArgsConstructor
 @Configuration
+@EnableConfigurationProperties(ServerProperties.class)
 public class AutoConfiguration {
 
-    /**
-     * Base url for cars server
-     */
-    private final static String url = "http://localhost:9001";
-
-    /**
-     * user name for cars server
-     */
-    private final static String user = "admin";
-
-    /**
-     * password for cars server
-     */
-    private final static String password = "secret";
+    private final ServerProperties properties;
 
     @Bean
     public CustomerService customerService(RestTemplate restTemplate) {
@@ -46,8 +37,8 @@ public class AutoConfiguration {
     @Bean
     public RestTemplate restTemplate(RestTemplateBuilder builder) {
         return builder
-                .basicAuthentication(user, password) //
-                .rootUri(url) //
+                .basicAuthentication(properties.getUser(), properties.getPassword()) //
+                .rootUri(properties.getUrl()) //
                 .build();
     }
 }
