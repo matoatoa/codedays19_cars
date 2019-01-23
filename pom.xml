@@ -12,6 +12,7 @@
     <modules>
         <module>server</module>
         <module>sales</module>
+        <module>service</module>
     </modules>
 
 </project>
