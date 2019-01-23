@@ -1,4 +1,4 @@
-package de.matoatoa.demo.codedays19.cars.client.service;
+package de.matoatoa.demo.codedays19.cars.client.common;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -15,7 +15,7 @@ public class CarsExceptionHandler
         extends ResponseEntityExceptionHandler {
 
     @ExceptionHandler(Exception.class)
-    protected ResponseEntity<Map<String, String>> handleException(Exception exception, HttpServletRequest request) {
+    protected ResponseEntity<Map<String, String>> handleException(Exception exception, HttpServletRequest request){
         final Map<String, String> message = new HashMap<>();
         message.put("Exception", exception.getLocalizedMessage());
         message.put("Request", request.getRequestURI());

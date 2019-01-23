@@ -1,5 +1,9 @@
 package de.matoatoa.demo.codedays19.cars.client.sales;
 
+import de.matoatoa.demo.codedays19.cars.client.common.Customer;
+import de.matoatoa.demo.codedays19.cars.client.common.CustomerService;
+import de.matoatoa.demo.codedays19.cars.client.common.Vehicle;
+import de.matoatoa.demo.codedays19.cars.client.common.VehicleService;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PutMapping;

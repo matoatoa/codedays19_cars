@@ -1,4 +1,4 @@
-package de.matoatoa.demo.codedays19.cars.client.service;
+package de.matoatoa.demo.codedays19.cars.client.common;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -9,13 +9,13 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
 /**
- * @author Jan Hauer
+ * @author Jan Hauer (EXXETA AG)
  */
 
 @Data
-@NoArgsConstructor
-@AllArgsConstructor
 @Wither
+@AllArgsConstructor
+@NoArgsConstructor
 public class Customer {
 
     @NotNull

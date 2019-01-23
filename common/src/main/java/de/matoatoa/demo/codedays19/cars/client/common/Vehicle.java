@@ -1,4 +1,4 @@
-package de.matoatoa.demo.codedays19.cars.client.service;
+package de.matoatoa.demo.codedays19.cars.client.common;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -11,14 +11,13 @@ import javax.validation.constraints.NotNull;
 import java.time.LocalDate;
 
 /**
- * @author Jan Hauer
+ * @author Jan Hauer (EXXETA AG)
  */
 
-
 @Data
+@Wither
 @NoArgsConstructor
 @AllArgsConstructor
-@Wither
 public class Vehicle {
 
     @NotNull
@@ -39,12 +38,7 @@ public class Vehicle {
     @Nullable
     private LocalDate dateOfLastService;
 
-    public boolean hadService() {
-        return dateOfLastService != null;
-    }
-
     public boolean isSold() {
         return owner != null && dateOfPurchase != null;
     }
-
 }
